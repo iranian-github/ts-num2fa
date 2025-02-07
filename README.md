@@ -1,4 +1,4 @@
-# num2fa
+# Num2Fa
 
 Convert numbers to Persian (Farsi) numbers and words. This package provides utilities to convert numbers into Persian digits, words, and ordinal words.
 
@@ -50,9 +50,9 @@ words('1/2'); // 'یک دوم'
 
 // Custom separators
 words(123.45, { decimal_separator: ' ممیز ' }); // 'یکصد و بیست و سه ممیز چهل و پنج صدم'
-words('1/2', { 
+words('1/2', {
   fraction_separator: ' تقسیم بر ',
-  ordinal_denominator: false 
+  ordinal_denominator: false
 }); // 'یک تقسیم بر دو'
 ```
 
@@ -88,14 +88,14 @@ console.log(words(lesson)); // 'دوازده'
 const fraction = '3/4';
 console.log(numbers(fraction)); // '۳/۴'
 console.log(words(fraction)); // 'سه چهارم'
-console.log(words(fraction, { 
+console.log(words(fraction, {
   fraction_separator: ' از ',
-  ordinal_denominator: false 
+  ordinal_denominator: false
 })); // 'سه از چهار'
 
 // Custom formatting
 const decimal = 45.67;
-console.log(numbers(decimal, { 
+console.log(numbers(decimal, {
   decimal_separator: '/',
   negative: ')',
   positive: '('
@@ -141,11 +141,11 @@ interface PriceProps {
 }
 
 const PersianPrice: React.FC<PriceProps> = ({ amount, showWords = false }) => {
-  const formattedNumber = numbers(amount, { 
+  const formattedNumber = numbers(amount, {
     decimal_separator: '/',
     negative: '-'
   });
-  
+
   return (
     <div className="price">
       <span className="digits">{formattedNumber} تومان</span>
@@ -163,7 +163,7 @@ function App() {
   return (
     <div>
       <PersianPrice amount={1234.56} showWords={true} />
-      {/* Outputs: 
+      {/* Outputs:
           ۱۲۳۴/۵۶ تومان
           یک هزار و دویست و سی و چهار و پنجاه و شش صدم تومان
       */}
@@ -183,7 +183,7 @@ app.use(express.json());
 
 app.post('/convert', (req, res) => {
   const { number, type, options } = req.body;
-  
+
   try {
     let result;
     switch (type) {
@@ -199,12 +199,12 @@ app.post('/convert', (req, res) => {
       default:
         throw new Error('Invalid conversion type');
     }
-    
+
     res.json({ success: true, result });
   } catch (error) {
-    res.status(400).json({ 
-      success: false, 
-      error: error.message 
+    res.status(400).json({
+      success: false,
+      error: error.message
     });
   }
 });
@@ -227,6 +227,7 @@ app.post('/convert', (req, res) => {
 Convert numbers to Persian digits.
 
 Options:
+
 - `decimal_separator`: Separator for decimal numbers (default: '٫')
 - `negative`: Prefix for negative numbers (default: '-')
 - `positive`: Prefix for positive numbers (default: '')
@@ -237,6 +238,7 @@ Options:
 Convert numbers to Persian words.
 
 Options:
+
 - `decimal_separator`: Separator for decimal numbers (default: ' و ')
 - `negative`: Prefix for negative numbers (default: 'منفی ')
 - `positive`: Prefix for positive numbers (default: '')
@@ -248,6 +250,7 @@ Options:
 Convert numbers to Persian ordinal words.
 
 Options:
+
 - `negative`: Prefix for negative numbers (default: 'منفی ')
 - `positive`: Prefix for positive numbers (default: '')
 
@@ -257,4 +260,4 @@ This project is licensed under the AGPL-3.0 License - see the [LICENSE.txt](LICE
 
 ## Contributing
 
-Contributions are welcome! Please see our [Contributing Guidelines](CONTRIBUTING.md) for details. 
+Contributions are welcome! Please see our [Contributing Guidelines](CONTRIBUTING.md) for details.
